@@ -1,7 +1,10 @@
 from manim import *
-from manim import Create, Scene, Transform, ReplacementTransform, FadeOut, Square, PI, PINK, Circle, TracedPath, Dot, RIGHT, Line, Rotate
+#  import manim as m
+#  from manim import DOWN, LEFT, UP, RIGHT, ORIGIN
+#  from manim import RED, PURPLE, BLUE, GREEN, ORANGE
+#  from manim import PI
 
-from random import randint
+#  from random import randint
 
 
 #  import networkx as nx
@@ -23,52 +26,17 @@ from random import randint
     #  G.add_edge('Node_%i' % (randint(0, i-1)), 'Node_%i' % i)
 
 
-class GraphTest(Scene):
-    def construct(self):
-        GD = Graph(list(G.nodes), list(G.edges), layout="spring", layout_scale=10)
-        self.play(Create(GD))
-        self.wait()
-        self.play(Uncreate(GD))
+#  class GraphTest(m.Scene):
+    #  def construct(self):
+        #  GD = m.Graph(list(G.nodes), list(G.edges), layout="spring", layout_scale=10)
+        #  self.play(Create(GD))
+        #  self.wait()
+        #  self.play(Uncreate(GD))
 
 
-class Shapes(Scene):
-    def construct(self):
-        dots = []
-        dots.append(Dot())
-        dots.append(AnnotationDot())
-        dots.append(LabeledDot(MathTex(r'\alpha').set_color(PURPLE)))
-        #  self.add(Group(*dots).arrange(buff=1).shift(2*UP))
-        for i, shape in enumerate(dots):
-            self.add(shape.shift(i*DOWN+2*LEFT))
-
-        circular = []
-        circular.append(Arc(0.2, 0, PI/2))
-        circular.append(AnnularSector(0.3, 0.4, PI*3/2, color=GREEN))
-        circular.append(Annulus(0.45, 0.5, color=BLUE))
-        circular.append(Circle(0.6, color=RED))
-        circular.append(Ellipse(1.4, 1.2, color=ORANGE))
-        for shape in circular:
-            self.add(shape.shift(LEFT+DOWN))
-
-        curves = []
-        curves.append(ArcBetweenPoints(ORIGIN, LEFT, PI / 2))
-        curves.append(CurvedArrow(ORIGIN, LEFT, radius=PI / 2))
-        curves.append(CurvedDoubleArrow(ORIGIN, LEFT))
-        curves.append(CubicBezier(ORIGIN, UP, LEFT+DOWN, LEFT))
-        for i, shape in enumerate(curves):
-            self.add(shape.shift(2*RIGHT + i*DOWN))
 
 
-class Hours(Scene):
-    def construct(self):
-        self.add(Circle(1, color=RED))
-        minutes = Line(ORIGIN, UP*0.9)
-        hours = Line(ORIGIN, UP*0.6)
-        self.play(Rotate(minutes, angle=-12*2*PI, about_point=ORIGIN, rate_func=linear, run_time=10),
-                  Rotate(hours, angle=-2*PI, about_point=ORIGIN, rate_func=linear, run_time=10))
-
-
-class Main(Scene):
+class Main(m.Scene):
     def construct(self):
         pass
 
