@@ -16,4 +16,4 @@ name="$(basename -s '.py' "$target")"
 page_target="$(cat "./target.txt")/build/"
 manim -qh "$target" Main \
     && cp "$target" "$page_target/$name.py" \
-    && convert "./media/images/$name/Main"* -resize 160x "$page_target/$name.png"
+    && convert "./media/images/$name/Main"* -resize 300x "$page_target/$name.png"

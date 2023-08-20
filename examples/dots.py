@@ -1,10 +1,12 @@
 from manim import *
+config.frame_width=2
 
 class Main(Scene):
     def construct(self):
-        objs = []
-        objs.append(Dot())
-        objs.append(AnnotationDot())
-        text = MathTex(r'\alpha').set_color(BLACK)
-        objs.append(LabeledDot(text))
-        self.add(Group(*objs).arrange(DOWN))
+        label = MathTex(r'\alpha', color=BLACK)
+        grp = Group(*[
+            Dot(),
+            AnnotationDot(),
+            LabeledDot(label),
+        ])
+        self.add(grp.arrange())
